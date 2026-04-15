@@ -1,8 +1,8 @@
 export const profile = {
   name: "Prashant Yadav",
-  role: "Machine Learning and AI Engineer",
+  role: "AI / ML Engineer",
   summary:
-    "Machine Learning and AI Engineer with a focus on production-grade intelligent systems, conversational AI, and computer vision pipelines.",
+    "I design and ship intelligent systems that combine LLM workflows, computer vision inference, and production-grade backend engineering.",
   location: "Hyderabad, India",
   phone: "+91 7529085674",
   email: "yruprashant@gmail.com",
@@ -11,67 +11,87 @@ export const profile = {
   resumeFile: "/PRASHANT%20YADAV.pdf"
 };
 
+export const navItems = [
+  { id: "about", label: "About" },
+  { id: "experience", label: "Experience" },
+  { id: "certifications", label: "Certifications" },
+  { id: "education", label: "Education" },
+  { id: "projects", label: "Projects" },
+  { id: "services", label: "Services" },
+  { id: "contact", label: "Contact" }
+];
+
+export const heroHighlights = [
+  "LLM + RAG products in production",
+  "Real-time computer vision pipelines",
+  "MLOps loops for measurable accuracy gains"
+];
+
 export const stack = [
   {
-    category: "Data Science / Machine Learning",
-    items: ["Machine Learning", "Deep Learning", "Computer Vision"]
+    category: "Core AI",
+    items: ["Machine Learning", "Deep Learning", "Computer Vision", "Transformers"]
   },
   {
-    category: "ML Frameworks",
-    items: ["Keras", "NumPy", "Pandas", "OpenCV", "Transformers"]
+    category: "LLM Engineering",
+    items: ["OpenAI APIs", "LangChain", "LlamaIndex", "LangSmith", "Ollama", "RAG"]
   },
   {
-    category: "LLM Tools",
+    category: "Backend + Infra",
     items: [
-      "LangChain",
-      "OpenAI APIs",
-      "Open-source LLMs",
-      "LlamaIndex",
-      "LangSmith",
-      "Ollama"
-    ]
-  },
-  {
-    category: "Backend Engineering",
-    items: [
-      "Flask",
       "FastAPI",
-      "RabbitMQ",
-      "ZeroMQ",
+      "Flask",
       "PostgreSQL",
-      "WebSockets",
       "Redis",
-      "Multithreading"
+      "RabbitMQ",
+      "WebSockets",
+      "Docker",
+      "AWS EC2"
     ]
+  },
+  {
+    category: "Data + MLOps",
+    items: ["Airflow", "MLflow", "DVC", "Prometheus", "Grafana", "S3", "pgvector"]
   },
   {
     category: "Programming",
-    items: ["Python", "C++", "Golang", "PostgreSQL", "Vector Databases"]
+    items: ["Python", "Golang", "C++", "SQL"]
   }
 ];
 
-export const experiences = [
+type Experience = {
+  title: string;
+  company: string;
+  duration: string;
+  projects: {
+    name: string;
+    stack: string[];
+    highlights: string[];
+  }[];
+};
+
+export const experiences: Experience[] = [
   {
     title: "Senior Associate (AI)",
     company: "Indian Political Action Committee",
     duration: "Jun 2025 - Present",
     projects: [
       {
-        name: "QueryBot - Conversational chatbot",
-        stack: ["PostgreSQL", "pgvector", "Agno", "MCP", "RAG", "AWS EC2"],
+        name: "QueryBot - Political Intelligence Assistant",
+        stack: ["Agno", "MCP", "PostgreSQL", "pgvector", "RAG", "AWS EC2"],
         highlights: [
-          "Built a ChatGPT-style political intelligence assistant on MCP + Agno for election analytics.",
-          "Integrated SQL + semantic retrieval over election, survey, social, and manifesto datasets.",
-          "Enabled leadership to extract constituency-level trends with much lower manual analysis effort."
+          "Delivered a conversational decision-support assistant for election analytics.",
+          "Blended SQL retrieval and semantic search to answer both metric-heavy and contextual questions.",
+          "Reduced dependency on manual constituency-level analysis for leadership teams."
         ]
       },
       {
-        name: "AI Voice Survey System",
-        stack: ["LiveKit", "Exotel", "Redis", "Docker", "AWS EC2"],
+        name: "Voice-Based Survey Automation Platform",
+        stack: ["LiveKit", "Exotel", "Redis", "Docker", "ASR", "LLM orchestration"],
         highlights: [
-          "Automated large-scale outbound voter surveys with a live Voice AI agent.",
-          "Implemented adaptive survey logic with ASR + LLM + rule-based branching.",
-          "Designed microservices and queuing to support thousands of concurrent calls."
+          "Built a scalable voice AI system for outbound voter interaction campaigns.",
+          "Implemented adaptive survey flows with dynamic branching based on responses.",
+          "Designed queue-backed microservices to support high concurrent call volume."
         ]
       }
     ]
@@ -82,16 +102,16 @@ export const experiences = [
     duration: "Apr 2023 - May 2025",
     projects: [
       {
-        name: "Multi-Stream License Plate Recognition",
-        stack: ["DeepStream", "RabbitMQ", "Golang", "Jetson Nano", "Fastag API"],
+        name: "Multi-Stream ANPR System",
+        stack: ["DeepStream", "Jetson Nano", "RabbitMQ", "Golang", "Fastag API"],
         highlights: [
-          "Built a multi-stream ANPR pipeline with PGIE/SGIE models on edge devices.",
-          "Transmitted detection metadata reliably via RabbitMQ + nvmsgbroker.",
-          "Reduced manual intervention by 80% with real-time toll automation."
+          "Built edge ANPR inference across multiple camera streams using PGIE/SGIE models.",
+          "Engineered reliable metadata delivery through nvmsgbroker and RabbitMQ.",
+          "Enabled near real-time toll flow automation with significantly less human intervention."
         ]
       },
       {
-        name: "Vehicle Detection + Image Capture + Retraining Loop",
+        name: "Detection-to-Retraining Feedback Loop",
         stack: [
           "DeepStream",
           "AWS S3",
@@ -104,12 +124,66 @@ export const experiences = [
           "Grafana"
         ],
         highlights: [
-          "Captured vehicle frames in real time and shipped images to S3 for retraining.",
-          "Built weekly retraining automation with experiment + data version tracking.",
-          "Improved model accuracy to 95% with monitoring-driven retraining."
+          "Automated image capture from production detections for model improvement cycles.",
+          "Built weekly retraining with experiment tracking and dataset versioning.",
+          "Raised field accuracy through telemetry-driven model updates."
         ]
       }
     ]
+  }
+];
+
+export const featuredProjects = [
+  {
+    title: "QueryBot: LLM + SQL + Vector Search",
+    description:
+      "A multi-source assistant that answers electoral intelligence questions with grounded responses and auditable retrieval paths.",
+    tech: ["PostgreSQL", "pgvector", "RAG", "MCP", "Agno"],
+    href: "/blog/querybot-political-intelligence-rag"
+  },
+  {
+    title: "AI Voice Survey Engine",
+    description:
+      "A production voice automation stack for large-scale outreach with live speech handling and compliance-aware workflow logic.",
+    tech: ["LiveKit", "Exotel", "Redis", "Docker", "Voice AI"],
+    href: "/blog/ai-voice-survey-system-at-scale"
+  },
+  {
+    title: "Edge ANPR for Toll Workflows",
+    description:
+      "DeepStream-based license plate pipeline deployed on Jetson devices with resilient event transport and downstream API integration.",
+    tech: ["DeepStream", "Jetson Nano", "RabbitMQ", "Golang"],
+    href: "/case-studies/anpr-system"
+  },
+  {
+    title: "Continuous CV Retraining Loop",
+    description:
+      "A closed-loop MLOps architecture linking real-time detections to curated data collection and scheduled retraining.",
+    tech: ["Airflow", "MLflow", "DVC", "S3", "Prometheus"],
+    href: "/blog/vehicle-image-capture-retraining-loop"
+  }
+];
+
+export const services = [
+  {
+    title: "LLM Product Engineering",
+    detail:
+      "End-to-end assistants with retrieval, tool-use workflows, evaluation hooks, and production deployment patterns."
+  },
+  {
+    title: "Computer Vision Systems",
+    detail:
+      "Real-time pipelines for detection and recognition workloads on edge and cloud environments."
+  },
+  {
+    title: "MLOps + Model Lifecycle",
+    detail:
+      "Data versioning, experiment tracking, retraining orchestration, and observability for stable model performance."
+  },
+  {
+    title: "AI Backend Architecture",
+    detail:
+      "API-first microservices with resilient messaging and scalable data infrastructure for ML applications."
   }
 ];
 
@@ -123,11 +197,13 @@ export const education = [
   {
     program: "Class 12 (CBSE)",
     school: "Army Public School, Bathinda",
+    duration: "",
     score: "86%"
   },
   {
     program: "Class 10 (CBSE)",
     school: "New St. Stephen's Public School, Agra",
+    duration: "",
     score: "87.6%"
   }
 ];
@@ -155,29 +231,27 @@ export const blogPosts: BlogPost[] = [
     slug: "querybot-political-intelligence-rag",
     title: "Building QueryBot: Political Intelligence with RAG + pgvector",
     excerpt:
-      "How I combined MCP architecture, Agno, PostgreSQL, and vector search to create a leadership-grade analytics assistant.",
+      "How I fused MCP-style orchestration, SQL retrieval, and vector search to deliver a practical analytics assistant.",
     date: "2025-11-10",
     tags: ["RAG", "PostgreSQL", "pgvector", "MCP", "Agno"],
     sections: [
       {
-        heading: "Problem",
+        heading: "Challenge",
         body: [
-          "Election analytics data was spread across structured tables, unstructured reports, and documents. Leadership needed a faster way to ask high-value questions without manual data pulls."
+          "Political datasets were fragmented across structured databases and unstructured reports, which slowed insight generation."
         ]
       },
       {
-        heading: "System design",
+        heading: "Architecture",
         body: [
-          "I designed a conversational platform on MCP architecture with Agno orchestration.",
-          "The retrieval layer combined SQL queries for hard metrics and pgvector semantic search for contextual political narratives.",
-          "The final response merged both retrieval channels to keep answers grounded and explainable."
+          "I designed a retrieval strategy that combines exact SQL querying and semantic recall using vector embeddings.",
+          "The assistant composes answers from both channels so outputs stay factual while preserving narrative context."
         ]
       },
       {
-        heading: "Impact",
+        heading: "Result",
         body: [
-          "The system enabled directors to pull constituency and historical trend insights in minutes.",
-          "Manual analysis workload dropped significantly and strategic iteration speed improved."
+          "Decision-makers could run constituency-level exploration in minutes, reducing manual analysis loops."
         ]
       }
     ]
@@ -186,29 +260,27 @@ export const blogPosts: BlogPost[] = [
     slug: "ai-voice-survey-system-at-scale",
     title: "Designing an AI Voice Survey System for Election Polling",
     excerpt:
-      "A production voice pipeline using LiveKit, Exotel, Redis, and containerized microservices to run compliant outbound surveys.",
+      "A resilient voice AI stack for high-volume outreach using live audio handling, adaptive prompts, and queue-backed services.",
     date: "2025-12-02",
     tags: ["Voice AI", "ASR", "LiveKit", "Redis", "Microservices"],
     sections: [
       {
-        heading: "Why voice",
+        heading: "Why this system",
         body: [
-          "Large voter surveys need speed, consistency, and multilingual flexibility. Human-call workflows were too expensive and hard to scale." 
+          "Manual calling workflows are costly and inconsistent at the scale required for time-bound campaign analytics."
         ]
       },
       {
-        heading: "Pipeline",
+        heading: "Implementation",
         body: [
-          "Exotel and LiveKit handled telephony and real-time audio streaming.",
-          "The Voice Agent integrated ASR, adaptive survey logic (LLM + rule trees), and neural TTS for two-way interactions.",
-          "We stored metadata, transcripts, sentiment, call duration, and drop-off patterns for downstream analytics."
+          "LiveKit and Exotel managed telephony and streaming while application services orchestrated speech and survey logic.",
+          "Redis queues coordinated workloads to preserve responsiveness during traffic spikes."
         ]
       },
       {
-        heading: "Reliability and compliance",
+        heading: "Operational impact",
         body: [
-          "Redis queues and Dockerized microservices made concurrency predictable.",
-          "We enforced disclosure messages and call recording policies to keep operations regulation-aligned."
+          "The platform handled large call volumes with better repeatability and richer interaction-level analytics."
         ]
       }
     ]
@@ -217,29 +289,26 @@ export const blogPosts: BlogPost[] = [
     slug: "deepstream-anpr-multistream",
     title: "Multi-Stream ANPR on Jetson Nano with DeepStream",
     excerpt:
-      "How I deployed a high-throughput license plate recognition pipeline with RabbitMQ, Golang post-processing, and Fastag integration.",
+      "Deploying high-throughput license plate recognition at the edge with robust event delivery and post-processing.",
     date: "2024-09-18",
     tags: ["DeepStream", "ANPR", "Jetson Nano", "RabbitMQ", "Computer Vision"],
     sections: [
       {
-        heading: "Core architecture",
+        heading: "Pipeline",
         body: [
-          "The pipeline used PGIE for plate detection and SGIE for plate recognition, running across multiple streams on Jetson Nano.",
-          "Detection outputs were sent via `nvmsgbroker` into RabbitMQ for reliable downstream handling."
+          "PGIE and SGIE stages were tuned for plate detection and recognition across multiple concurrent streams."
         ]
       },
       {
-        heading: "Post-processing",
+        heading: "Reliability design",
         body: [
-          "I built a Golang post-processing service to normalize plate strings, extract state codes, and compute confidence metrics.",
-          "This made downstream analytics and business decisions stable even when upstream frames were noisy."
+          "Metadata events were passed through nvmsgbroker into RabbitMQ and normalized by Golang services."
         ]
       },
       {
-        heading: "Business outcome",
+        heading: "Outcome",
         body: [
-          "Fastag API integration enabled real-time toll workflow automation.",
-          "The final system reduced manual intervention by roughly 80% while maintaining high throughput."
+          "The deployed workflow supported toll automation with faster processing and lower manual intervention."
         ]
       }
     ]
@@ -248,29 +317,26 @@ export const blogPosts: BlogPost[] = [
     slug: "vehicle-image-capture-retraining-loop",
     title: "From Real-Time Detection to Continuous Retraining",
     excerpt:
-      "An end-to-end feedback loop with DeepStream capture, S3 storage, Airflow orchestration, and monitored model retraining.",
+      "Creating a feedback architecture where production detections continuously improve model quality.",
     date: "2024-12-07",
     tags: ["MLOps", "Airflow", "MLflow", "DVC", "S3"],
     sections: [
       {
-        heading: "Data capture",
+        heading: "Data flow",
         body: [
-          "Vehicle detections triggered image capture events in real time.",
-          "The images were streamed to AWS S3 with MQTT-based messaging for low-latency coordination."
+          "The system captures inference frames in production and stores them in S3 for curated retraining batches."
         ]
       },
       {
-        heading: "Automation",
+        heading: "Lifecycle control",
         body: [
-          "Airflow orchestrated data movement and retraining schedules.",
-          "MLflow tracked experiments while DVC controlled dataset versions for reproducibility."
+          "Airflow orchestrates scheduling while MLflow and DVC preserve experiment and dataset traceability."
         ]
       },
       {
-        heading: "Monitoring and gains",
+        heading: "Monitoring",
         body: [
-          "Prometheus + Grafana monitored drift and model behavior continuously.",
-          "The closed-loop retraining strategy helped lift model accuracy to 95%."
+          "Prometheus and Grafana dashboards expose drift indicators that trigger targeted retraining decisions."
         ]
       }
     ]

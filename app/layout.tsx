@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Source_Serif_4 } from "next/font/google";
+import { Manrope, Sora } from "next/font/google";
 import "./globals.css";
 
-const heading = Space_Grotesk({
+const heading = Sora({
   subsets: ["latin"],
   variable: "--font-heading"
 });
 
-const body = Source_Serif_4({
+const body = Manrope({
   subsets: ["latin"],
   variable: "--font-body"
 });
 
 export const metadata: Metadata = {
-  title: "Prashant Yadav | AI Engineer",
+  title: "Prashant Yadav | AI/ML Engineer",
   description:
-    "Portfolio of Prashant Yadav - Machine Learning and AI Engineer specializing in conversational AI, DeepStream, and production ML systems."
+    "AI/ML engineer portfolio featuring production conversational AI, computer vision systems, and end-to-end MLOps delivery."
 };
 
 export default function RootLayout({
@@ -25,7 +25,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${heading.variable} ${body.variable}`}>{children}</body>
+      <body className={`${heading.variable} ${body.variable} antialiased`}>
+        {children}
+      </body>
     </html>
   );
 }
